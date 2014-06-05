@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DB Query Form</title>
+<script type="text/javascript">
+function hideOrShowFields(fieldToHide){
+	if(document.getElementById){
+		// hiding all regions
+		document.getElementById("ID").style.display = 'none';
+		document.getElementById("name").style.display = 'none';
+		document.getElementById("email").style.display = 'none';
+		//unhiding based on the choosing
+		if(fieldToHide == 2){
+			document.getElementById("name").style.display = 'block';
+			document.getElementById("email").style.display = 'block';
+		}else if(fieldToHide == 3){
+			document.getElementById("ID").style.display = 'block';
+		}else if(fieldToHide == 1){
+			document.getElementById("ID").style.display = 'none';
+			document.getElementById("name").style.display = 'none';
+			document.getElementById("email").style.display = 'none';
+		}
+		
+		
+	}else{
+		alert("Your Browser doesn't support this feature");
+	}
+}
+
+</script>
+</head>
+<body>
+<form action="ServletForm" method="post">
+1. Show contents from database <input type="radio" name="showfields" value="showDBContents" onclick="hideOrShowFields(1)"/><br>
+2. Add info to DataBase <input type="radio" name="showfields" value="addObjectToDB" onclick="hideOrShowFields(2)" /><br>
+3. Search the DB with ID <input type="radio" name="showfields" value="searchDB" onclick="hideOrShowFields(3)" /> <br><br><br>
+
+<input type="text" name="ID" id="ID" value="ID" hidden="true"/><br>
+<input type="text" name="name" id="name" value="Name" hidden="true"/><br>
+<input type="text" name="email" id="email" value="Email" hidden="true" /><br><br>
+
+<input type="submit" value="Submit Me!!">
+
+
+</form>
+</body>
+</html>
